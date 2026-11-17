@@ -1,0 +1,141 @@
+//A. Program for Bubble Sort
+#include <stdio.h>
+
+int main()
+{
+    int i,j,n,temp,min, a[10];
+    printf("\n************* program for Bubble Sort *************");
+    printf("\n \n Number of element in an array n=:");
+    scanf("\n %d", &n);
+    printf("\n Element in an array: ");
+
+    for(i=0;i<n;i++)
+    {
+        scanf("\n %d", &a[i]);
+    }
+
+    //Display Original Array
+    printf("\n Original array is: ");
+    for(i=0;i<n;i++)
+    {
+        printf("\n %d", a[i]);
+    }
+
+    // Bubble sort main Code
+    for(i=0;i<=n-1;i++)
+    {
+        for(j=0;j<n-1;j++)
+        {
+            if(a[j+1]<a[j])
+            {
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+            }
+        }
+    }
+
+    //Display result
+    printf("\n \n Bubble sorted array is:");
+    for(i=0;i<n;i++)
+    {
+        printf("\n %d", a[i]);
+    }
+
+    return 0;
+}
+
+
+//B. Program for Selection Sort
+#include <stdio.h>
+
+int main()
+{
+    int i,j,n,temp,min, a[10];
+    printf("\n************* Program for Selection Sort *************");
+    printf("\n \n Number of element in an array n=:");
+    scanf("\n %d", &n);
+    printf("\n Element in an array: ");
+
+    for(i=0;i<n;i++)
+    {
+        scanf("\n %d", &a[i]);
+    }
+
+    //Display Original Array
+    printf("\n Original array is:");
+    for(i=0;i<n;i++)
+    {
+        printf("\n %d", a[i]);
+    }
+
+    // selection sort main code
+    for(i=0;i<n;i++)
+    {
+        min=i;
+        for(j=i+1;j<n;j++)
+        {
+            if(a[j]<a[min])
+                min=j;
+        }
+        temp=a[min];
+        a[min]=a[i];
+        a[i]=temp;
+    }
+
+    //display result
+    printf("\n \n Selection sorted array is:");
+    for(i=0;i<n;i++)
+    {
+        printf("\n %d", a[i]);
+    }
+
+    return 0;
+}
+
+
+//C. Program for Insertion Sort
+#include <stdio.h>
+
+int main()
+{
+    int i,j,n,temp,min, a[10];
+    printf("\n************* Program for Insertion Sort *************");
+    printf("\n \n Number of element in an array n=:");
+    scanf("\n %d", &n);
+    printf("\n Element in an array: ");
+
+    for(i=0;i<n;i++)
+    {
+        scanf("\n %d", &a[i]);
+    }
+
+    //Display Original Array
+    printf("\n Original array is: ");
+    for(i=0;i<n;i++)
+    {
+        printf("\n %d", a[i]);
+    }
+
+    // Insertion sort main Code
+    for(i=0;i<n;i++)
+    {
+        temp=a[i];
+        j=i-1;
+        while(j>=0 && (a[j]>temp))
+        {
+            a[j+1]=a[j];
+            j--;
+        }
+        a[j+1]=temp;
+    }
+
+    //Display result
+    printf("\n \n Insertion sorted array is:");
+    for(i=0;i<n;i++)
+    {
+        printf("\n %d", a[i]);
+    }
+
+    return 0;
+}

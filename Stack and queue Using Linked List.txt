@@ -1,0 +1,199 @@
+//1. Stack Using Linked List
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node {
+    int data;
+    struct node* next;
+} node;
+
+struct node* top = NULL;
+
+void push();
+void pop();
+void disp(node*);
+
+int main()
+{
+    int ch;
+
+    do
+    {
+        printf("\n ****** Select Stack Operation using Linked List **********");
+        printf("\n 1.Push \n 2.Pop \n 3.Display \n 4.Exit ");
+        printf("\n Enter your Choice:=");
+        scanf("%d", &ch);
+
+        switch(ch)
+        {
+            case 1: push();
+                    break;
+            case 2: pop();
+                    break;
+            case 3: disp(top);
+                    break;
+            case 4: exit(0);
+                    break;
+        }
+    }while(ch!=4);
+
+    return 0;
+}
+
+void push()
+{
+    int val;
+    struct node* newNode;
+
+    printf("\n Enter a number:=");
+    scanf("%d", &val);
+
+    newNode = (node*)malloc(sizeof(node));
+
+    if (newNode == NULL)
+    {
+        printf("Insufficient memory\n");
+    }
+    else
+    {
+        newNode->data = val;
+        newNode->next = top;
+        top = newNode;
+    }
+}
+
+void pop()
+{
+    node *temp;
+    temp = top;
+    int poppedVal;
+
+    if (temp == NULL)
+    {
+        printf("Stack empty\n");
+    }
+    else
+    {
+        poppedVal = temp->data;
+        top = top->next;
+        free(temp);
+        printf("%d popped from stack\n", poppedVal);
+    }
+}
+
+void disp(node *temp)
+{
+    while(temp != NULL)
+    {
+        printf(" %d->", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL");
+}
+
+
+
+//2. Queue Using Linked List
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node {
+    int data;
+    struct node* next;
+} node;
+
+struct node* front = NULL;
+struct node* rear = NULL;
+
+void enqueue();
+void dequeue();
+void disp(node*);
+
+int main()
+{
+    int ch;
+
+    do
+    {
+        printf("\n ****** Select Queue Operation using Linked List **********");
+        printf("\n 1.Enqueue \n 2.Dequeue \n 3.Display \n 4.Exit ");
+        printf("\n Enter your Choice:=");
+        scanf("%d", &ch);
+
+        switch(ch)
+        {
+            case 1: enqueue();
+                    break;
+            case 2: dequeue();
+                    break;
+            case 3: disp(front);
+                    break;
+            case 4: exit(0);
+                    break;
+        }
+    }while(ch!=4);
+
+    return 0;
+}
+
+void enqueue()
+{
+    int val;
+    struct node* newNode;
+
+    printf("\n Enter a number:=");
+    scanf("%d", &val);
+
+    newNode = (node*)malloc(sizeof(node));
+
+    if (newNode == NULL)
+    {
+        printf("Insufficient memory\n");
+    }
+    else
+    {
+        newNode->data = val;
+        newNode->next = NULL;
+
+        if(rear == NULL)
+            front = rear = newNode;
+        else
+        {
+            rear->next = newNode;
+            rear = newNode;
+        }
+    }
+}
+
+void dequeue()
+{
+    node *temp;
+    temp = front;
+    int delvalue;
+
+    if (temp == NULL)
+    {
+        printf("Queue empty\n");
+    }
+    else
+    {
+        delvalue = temp->data;
+        front = front->next;
+
+        if(front == NULL)
+            rear = NULL;
+
+        free(temp);
+        printf("%d delete from Queue\n", delvalue);
+    }
+}
+
+void disp(node *temp)
+{
+    while(temp != NULL)
+    {
+        printf(" %d->", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL");
+}

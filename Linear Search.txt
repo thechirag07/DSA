@@ -1,0 +1,40 @@
+//Linear Search
+#include <stdio.h>
+
+int main()
+{
+    int i,n,a[50],target,found=0;
+    printf("\n enter the size of array:");
+    scanf("\n%d",&n);
+    printf("\n enter the elements into the array");
+
+    for(i=0; i<n; i++)
+    {
+        printf("\n\ta[%d]",i);
+        scanf("%d",&a[i]);
+    }
+
+    printf("\n Original array is: ");
+
+    for(i=0;i<n;i++)
+    {
+        printf("\n \n a[%d]= %d", i, a[i]);
+    }
+
+    printf("\nEnter the element to search=");
+    scanf("%d",&target);
+
+    for(i=0;i<n;i++)
+    {
+        if (a[i]==target){
+            printf("\n key element is present at %d location",i);
+            found=1;
+            break;
+        }
+    }
+
+    if(!found)
+        printf("\nTarget is not present");
+
+    return 0;
+}

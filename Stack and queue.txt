@@ -1,0 +1,104 @@
+//Stack using Array
+#include <stdio.h>
+#include <stdlib.h> // For exit()
+#define SIZE 10 // Define the maximum size of the stack
+
+int disp();
+int pop();
+int push();
+int isEmpty();
+int isFull();
+
+int stack[SIZE]; // Array to store stack elements
+int top = -1; // Index of the top element, initialized to -1 (empty stack)
+
+int main()
+{
+    int ch;
+    while(1)
+    {
+        printf("\n ****** Select Stack Operation **********");
+        printf("\n 1.Push \n 2.Pop \n 3.Display \n 4.Exit ");
+        printf("\n Enter your Choice:=");
+        scanf("%d", &ch);
+
+        switch(ch)
+        {
+            case 1: push();
+                    break;
+            case 2: pop();
+                    break;
+            case 3: disp();
+                    break;
+            case 4: exit(0);
+                    break;
+        }
+    }
+    return 0;
+}
+
+// Function to check if the stack is empty
+int isEmpty() {
+    if(top ==- 1)
+        return 1;
+    else
+        return 0;
+}
+
+// Function to check if the stack is full
+int isFull()
+{
+    if(top == SIZE-1)
+        return 1;
+    else
+        return 0;
+}
+
+// Function to push an element onto the stack
+int push() {
+    int item;
+    if (isFull())
+    {
+        printf("Stack Full! Cannot push" );
+    }
+    else
+    {
+        printf("Enter element in stack= ");
+        scanf("%d", &item);
+        top++;
+        stack[top]=item;
+    }
+}
+
+// Function to pop an element from the stack
+int pop()
+{
+    int popped_item;
+    if(isEmpty()) {
+        printf("Stack Underflow! Cannot pop from empty stack.\n");
+    }
+    else {
+        popped_item=stack[top];
+        top--;
+        printf(" Popped element is %d", popped_item);
+    }
+}
+
+// Function to display the elements in the stack
+int disp()
+{
+    int i;
+    if(isEmpty()) {
+        printf("Stack is empty.\n");
+    }
+    else
+    {
+        printf("Elements in stack: ");
+        for(i=top; i>=0;i--)
+        {
+            printf("%d ", stack[i]);
+        }
+        printf("\n");
+    }
+}
+

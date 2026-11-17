@@ -1,0 +1,108 @@
+//Alphabet Pyramid
+#include <stdio.h>
+
+int main() {
+    int i, j, k;
+    int rows = 4;
+
+    for(i = 1; i <= rows; i++) {
+        for(j = i; j < rows; j++) {
+            printf(" ");
+        }
+
+        char ch = 'A';
+
+        for(k = 1; k <= i; k++) {
+            printf("%c", ch);
+            ch++;
+        }
+
+        ch -= 2;
+
+        for(k = 1; k < i; k++) {
+            printf("%c", ch);
+            ch--;
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+//2. Diamond Shape Using Numbers
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
+
+    for(i = 1; i <= n; i++) {
+        for(j = 1; j <= n - i; j++) {
+            printf(" ");
+        }
+
+        for(j = 1; j <= i * 2 - 1; j++) {
+            printf("%d", j);
+        }
+
+        printf("\n");
+    }
+
+    for(i = n - 1; i > 0; i--) {
+        for(j = 1; j <= n - i; j++) {
+            printf(" ");
+        }
+
+        for(j = 1; j <= i * 2 - 1; j++) {
+            printf("%d", j);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+//3. Full Alphabet Pyramid
+#include <stdio.h>
+
+int main() {
+    int i, j, space, rows;
+
+    printf("Enter the number of rows (1-26): ");
+    scanf("%d", &rows);
+
+    if(rows < 1 || rows > 26) {
+        printf("Invalid number of rows\n");
+        return 1;
+    }
+
+    for(i = 1; i <= rows; i++) {
+        for(space = 1; space <= rows - i; space++) {
+            printf("  ");
+        }
+
+        char ch = 'A';
+
+        for(j = 1; j <= i; j++) {
+            printf("%c ", ch);
+            ch++;
+        }
+
+        ch -= 2;
+
+        for(j = 1; j < i; j++) {
+            printf("%c ", ch);
+            ch--;
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
